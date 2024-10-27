@@ -1,0 +1,34 @@
+\section*{3}
+
+Una persona dispone de 6000 euros para invertir.
+Se le sugiere invertir en bonos de dos tipos A y B.
+Los del tipo A tienen más riesgo y dan un interés anual del 10\%,
+mientras que los del tipo B tienen menos riesgo, pero dan un interés anual del 7\%.
+Esta persona decide invertir, como máximo, 3500 euros en bonos del tipo A,
+y 2400 euros, como mínimo, en bonos del tipo B,
+de forma que la cantidad invertida en bonos de tipo A no sea menor que la invertida en bonos de tipo B.
+Su objetivo es obtener, con estas restricciones, el máximo interés.
+
+Se pide formular el correspondiente problema de optimización.
+
+\noindent\rule{10cm}{0.4pt}
+
+Sean $e_A$ la cantidad de euros invertidos en bonos del tipo $A$ y $e_B$ la cantidad de euros invertidos en bonos del tipo $B$,
+la función objetivo representa el interés anual que se va a recibir,
+esta esta representada por $\frac{0.1 e_A + 0.07 e_B}{e_A + e_B}$,
+suponiendo que ninguno de los dos bonos deja de pagar.
+
+Por otro lado las restricciones que tenemos que tener en cuenta son no sobre pasar el capital total,
+respetar el máximo y mínimo a invertir en los bonos del tipo $A$ y $B$,
+y que la inversion en bonos del tipo $A$ no sea menor a la del tipo $B$.
+
+Con todo esto tenemos el problema de optimización,
+\begin{equation}
+\begin{aligned}
+    \text{Maximizar }   & \frac{0.1 e_A + 0.07 e_B}{e_A + e_B} \\
+    \text{sujeto a }    & e_A + e_B \leq 6000 \\
+                        & e_A \leq 3500 \\
+                        & e_B \geq 2400 \\
+                        & e_A \geq e_B \\
+\end{aligned}
+\end{equation}
