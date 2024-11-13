@@ -1,0 +1,27 @@
+\section*{1}
+
+Resuelva el ejercicio $(2.3)$ de la página 31 del texto base.
+
+\noindent\rule{10cm}{0.4pt}
+
+Consideramos $f$ un funcional cuasi convexo,
+entonces para todo $x, y \in S$ definimos $m = \max \{ f(x), f(y) \}$,
+tenemos que $x, y \in S_m = \{ p \in S | f(p) \leq m \}$,
+y como $f$ es cuasi convexo $S_m$ es un conjunto convexo,
+por tanto para todo $\lambda \in [0, 1]$
+\begin{equation*}
+    \lambda x + (1 - \lambda) y \in S_m \Rightarrow f(\lambda x + (1 - \lambda) y) \leq m = \max \{ f(x), f(y) \}.
+\end{equation*}
+Como queríamos ver.
+
+Consideramos el funcional $f$ que cumple para todo $x, y \in S$, $\lambda \in [0,1]$
+\begin{equation*}
+    f(\lambda x + (1 - \lambda) y) \leq \max \{ f(x), f(y) \}.
+\end{equation*}
+Entonces para cualquier $\alpha \in \R$ veamos que el conjunto $S_\alpha =  \{ p \in S | f(p) \leq \alpha \}$ es convexo.
+Para todo $x, y \in S_\alpha$, notemos que $f(x) \leq \alpha$ y $f(y) \leq \alpha$,
+y para todo $\lambda \in [0,1]$ tenemos que
+\begin{equation*}
+    f(\lambda x + (1 - \lambda) y) \leq \max \{ f(x), f(y) \} \leq \alpha,
+\end{equation*}
+y por tanto $\lambda x + (1 - \lambda) y \in S_\alpha$, implicando que $S_\alpha$ es convexo.

@@ -1,0 +1,43 @@
+\section*{2}
+
+Sea $f: S \rightarrow \R$, donde $S$ es un conjunto convexo no vacío de un espacio normado $X$.
+Se dice que $f$ es estrictamente cuasi convexa si para todo $x_1 , x_2 \in S$,
+con $f(x_1) \neq f(x_2)$, se tiene que
+\begin{equation*}
+    f(\lambda x_1 + (1 - \lambda) x_2) < \max\{ f(x_1), f(x_2) \}, \; \forall \lambda \in (0, 1).
+\end{equation*}
+
+Considérese el problema de optimización dado por:
+\begin{equation*}
+    \min_{x \in S} f(x).
+\end{equation*}
+
+Se pide demostrar el siguiente teorema:
+
+\begin{theorem}
+    Supóngase que $f$ es estrictamente cuasi convexa.
+    Si en $x_0 \in S$ se alcanza un mínimo local ($x_0$ is a local minimal point),
+    entonces en $x_0$ se alcanza, de hecho, un mínimo global ($x_0$ is a global minimal point).
+\end{theorem}
+
+\noindent\rule{10cm}{0.4pt}
+
+Siguiendo la misma idea que el Teorema 2.16 del texto base.
+
+Sea $x_0 \in S$ un mínimo local de un funcional estrictamente cuasi convexo $f$.
+Entonces $\exists \varepsilon > 0$ tal que $f(x_0) \leq f(x)$ para todo $x \in S \cap B(x_0, \varepsilon)$.
+
+Consideremos un punto $x \in S \setminus B(x_0, \varepsilon)$, tal que $f(x) \neq f(x_0)$.
+Definimos $\lambda := \frac{\varepsilon}{\| x_0 - x \|} \in (0, 1)$,
+obteniendo $x_\lambda := \lambda x + (1 - \lambda) x_0 \in S$,
+\begin{equation*}
+    \| x_\lambda - x_0 \| = \| \lambda x + (1 - \lambda) x_0 - x_0 \| = \lambda \| x - x_0 \| = \varepsilon,
+\end{equation*}
+es decir $x_\lambda \in B(x_0, \varepsilon)$.
+
+Por tanto, utilizando la cuasi convexidad estricta de $f$,
+\begin{equation*}
+    f(x_0) \leq f(x_\lambda) = f(\lambda x + (1 - \lambda) x_0 - x_0) < \max \{ f(x), f(x_0) \},
+\end{equation*}
+lo que implica $f(x_0) < f(x)$, por tanto para todo $x \in S$ tenemos que $f(x_0) = f(x)$ o bien $f(x_0) < f(X)$,
+asi que $x_0$ es un mínimo global.

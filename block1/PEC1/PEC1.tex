@@ -1,0 +1,102 @@
+%=============================================================================
+%
+%	Optimization in Banach Spaces
+%
+%	Continuos evaluation work - Block 1
+%
+%=============================================================================
+
+
+
+%=============================================================================
+%	Packages
+%=============================================================================
+
+\documentclass[11pt, a4paper]{article}		% document format
+\usepackage{graphicx}						% package to insert graphics
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}					% this enables all unicode characters
+\usepackage{amsmath, amsfonts, amssymb} 	% maths packages
+\usepackage{amsthm}							% theorem styles
+\usepackage{fancyhdr}						% package for headers, foot and margin notes
+\usepackage{enumitem}						% allows to change the enumeration format in line
+\usepackage{tikz}
+\usepackage[
+  top=2cm,
+  bottom=2cm,
+  left=3cm,
+  right=2cm,
+  headheight=17pt, % as per the warning by fancyhdr
+  includehead,includefoot,
+  heightrounded, % to avoid spurious underfull messages
+]{geometry} 
+
+
+
+
+%=============================================================================
+%	Commands
+%=============================================================================
+
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\R}{\mathbb{R}}
+
+
+
+%=============================================================================
+%	Environment
+%=============================================================================
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lema}[theorem]{Lema}
+\newtheorem{exercise}{Exercise}
+\newtheorem{algorithm*}{Algorithm}
+
+\theoremstyle{definition}
+\newtheorem{solution}{Solution}[exercise]
+\renewcommand*{\thesolution}{\theexercise.\alph{solution}}	% Make solution instances enumerate with number of exercise and letter of solution
+
+\usetikzlibrary{calc}
+
+
+
+%============================================================================
+%	Pagestyle
+%=============================================================================
+
+\pagestyle{fancy}		% As we use the fancyhdr pkg need the fancy pagestyle, for more information:
+						% http://tug.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+
+
+%\topmargin 0 pt
+%\oddsidemargin 0 pt
+%\evensidemargin 0 pt
+%\marginparwidth 0 pt
+
+
+%\textheight 25cm
+%\textwidth 400 pt
+%\advance\textheight by \topskip
+
+%\parindent 0pt
+%\parskip 5mm plus 1mm minus 1mm
+
+\fancyhead[C]{PEC 1}					                	% Central header
+\fancyhead[L]{Optimization in Banach Spaces}   				% Left header
+\fancyhead[R]{Marc Jovani Bertran}						    % Right header
+
+
+
+%=============================================================================
+%	Document
+%=============================================================================
+
+\begin{document}
+	\include{PEC1_1}
+	\include{PEC1_2}
+	\include{PEC1_3}
+	\include{PEC1_4}
+\end{document}

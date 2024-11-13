@@ -1,0 +1,164 @@
+\section*{3}
+
+Se considera en este ejercicio un conjunto $S \subset \R^n$ poliédrico.
+Se recuerda que $S$ es poliédrico si se describe como la intersección de un número finito de semiespacios cerrados,
+es decir,
+\begin{equation*}
+    S = \{ x: \langle v_i, x \rangle \leq \alpha_i, \; \forall i = 1, 2, \dots, m \},
+\end{equation*}
+donde $m \in \N$, $v_i$ es un vector no nulo de $\R^n$ y $\alpha_i$ un escalar,
+para todos $i = 1, 2, . . . , m$ (el producto escalar viene denotado por $\langle \cdot, \cdot \rangle$).
+
+De la definición, se deduce que todo conjunto poliédrico es convexo y cerrado.
+Indique la demostración.
+
+Por otro lado, se dice que $x \in S$ es un punto extremo de $S$ si $x = \lambda x_1 + (1 - \lambda)x_2$,
+con $x_1 , x_2 \in S$ y $\lambda \in (0, 1)$, implica que $x = x_1 = x_2$.
+El número de puntos extremos de $S$ es finito.
+
+Se recuerda también que, si $S$ es un conjunto poliédrico compacto,
+entonces todo punto $x$ de $S$ se puede expresar como combinación lineal convexa de los puntos extremos de $S$.
+Es decir, si $\{ x_1, x_2, \dots, x_r \}$ denota el conjunto de puntos extremos de $S$,
+entonces para cada $x \in S$ existen $\lambda_1, \lambda_2, \dots, \lambda_r \geq 0$,
+con $\sum_{i = 0}^{r} \lambda_i = 1$ tales que
+\begin{equation*}
+    x = \sum_{i = 0}^{r} x_i \lambda_i
+\end{equation*}
+
+Teniendo en cuenta la teoría anteriormente expuesta, se pide probar el siguiente resultado:
+\begin{theorem}\label{ex3_theorem}
+    Sea $S$ un conjunto poliédrico compacto no vacío de $\R^n$.
+    Considérese el problema
+    \begin{equation}\label{ex3_theorem_opt_problem}
+        \max_{x \in S} f(x),
+    \end{equation}
+    con $f: \R^n \rightarrow \R$.
+    Si $f$ es cuasi convexa y continua en $S$,
+    entonces existe un punto extremo en el que $f$ alcanza un máximo global.
+\end{theorem}
+
+\noindent\rule{10cm}{0.4pt}
+
+\begin{lema}\label{ex3_lema_convexity}
+    Todo conjunto poliédrico es cerrado y convexo.
+\end{lema}
+
+\begin{proof}
+    Sea $S$ un conjunto poliédrico.
+    Como $S$ es la intersección de conjuntos cerrados es cerrado.
+
+    Los semi-espacios $S_i = \{ x : \langle v_i, x \rangle \leq \alpha_i \}$, que forman $S$, son convexos.
+    Para todo $x, y \in S_i$,
+    \begin{equation*}
+        \langle v_i, \lambda x + (1 - \lambda) y \rangle
+        = \lambda \langle v_i, x \rangle + (1 - \lambda) \langle v_i, y \rangle
+        \leq \lambda \alpha_i + (1 - \lambda) \alpha_i
+        = \alpha_i, \quad \forall \lambda \in [0,1].
+    \end{equation*}
+    Y la intersección de conjuntos convexos es convexa.
+    Por tanto $S$ es convexo.
+\end{proof}
+
+Para probar el Teorema \ref{ex3_theorem},
+primero vemos que como $S$ es compacto y $f$ es continuo y convexo existe un máximo global.
+Consideramos el conjunto de puntos extremos de $S$ y lo denotamos como $E_S$,
+sea $\hat{x} \in E_S$ el punto extremo en el que $f$ alcanza un mayor valor,
+es decir $f(\hat{x}) \geq x$ para todo $x \in E_S$.
+Podemos considerarlo ya que el conjunto $E_S$ es finito.
+
+Sea $S_{f(\hat{x})} = \{ x \in S | f(x) \leq f(\hat(x)) \}$,
+notemos que $E_S \subset S_{f(\hat{x})}$,
+como $f$ es cuasi convexa $S_{f(\hat{x})}$ es un conjunto convexo.
+
+Supongamos que existe $y \in S$ tal que $y \notin S_{f(\hat{x})}$.
+Consideramos la recata $\lambda \hat{x} + (1 - \lambda) y$, para todo $\lambda \in \R$,
+esta intersección con $S$ en $\hat{x}$ y en un punto de una cara del poliedro, $x^{(1)}$,
+dicha cara es a su vez un poliedro $S^{(1)}$ en una un espacio de dimension menor.
+Podemos iterar este proceso eligiendo un punto extremo, $\hat{x}^{(1)}$ del poliedro $S^{(1)}$ y considerando la entre este y $x^{(1)}$,
+este proceso es finito ya que la dimension del nuevo poliedro es menor en cada iteración.
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+
+    % Define the vertices of the polyhedron (polygon)
+    \coordinate (A) at (0, 0);
+    \coordinate (B) at (6, 1);
+    \coordinate (C) at (5, 4);
+    \coordinate (D) at (2, 5);
+    \coordinate (E) at (-2, 3);
+
+    % Draw the polyhedron
+    \draw[thick] (A) -- (B) -- (C) -- (D) -- (E) -- cycle;
+
+    % Define the interior point
+    \coordinate (P) at (2, 2);
+
+    % Draw a line from one vertex to the interior point
+    \draw[dashed, blue] (A) -- (P);
+
+    % Draw a line from the interior point to a point on the boundary
+    \draw[dashed, blue] (P) -- ($(D)!0.75!(C)$);
+
+    % Draw the interior point
+    \filldraw[red] (P) circle (2pt) node[right] {y};
+    
+    % Draw the point of contact in the boundary
+    \filldraw[orange] ($(D)!0.75!(C)$) circle (2pt);
+
+    % Mark vertices with small circles for clarity
+    \filldraw[green] (A) circle (2pt) node[left] {$\hat{x}$};
+    \foreach \point in {B, C, D, E}
+        \filldraw[black] (\point) circle (1.5pt);
+
+\end{tikzpicture}
+\caption{Explicación visual de la demostración}
+\label{fig:prove_schema}
+\end{figure}
+
+Paramos en cuanto $x^{(l)}$ sea un punto extremo de $S$,
+en este caso tenemos que existe $\lambda \in (0,1)$ tal que $x^{(l - 1)} = \lambda x^{(l)} + (1 - \lambda) \hat{x}^{(l - 1)}$,
+como $S_{f(\hat{x})}$ es convexo y $x^{(l)}, \hat{x}^{(l - 1)} \in E_S \subset S_{f(\hat{x})}$,
+entonces $x^{(l-1)} \in S_{f(\hat{x})}$.
+Propagando el razonamiento hacia atrás tenemos que $y \in S_{f(\hat{x})}$.
+Que contradice la hipótesis y por tanto $S_{f(\hat{x})} = S$,
+que implica que para todo $y \in S$ tenemos que $f(y) \leq f(\hat{x})$,
+y por tanto el punto extremo $\hat{x}$ es un máximo global de $f$ en $S$ como queríamos ver.
+
+
+
+
+% \begin{lema}\label{ex3_lema_bounded}
+%     Todo conjunto poliédrico compacto esta acotado.
+% \end{lema}
+% 
+% \begin{proof}
+%     Sea $S$ un conjunto poliédrico compacto.
+%     Para todo $x \in S$ tenemos que
+%     \begin{equation*}
+%         \| x \| 
+%         = \| \sum_{i = 0}^{r} x_i \lambda_i \|
+%         \leq \sum_{i = 0}^{r} \lambda_i \| x_i \|
+%         \leq \max_{1 \leq i \leq r} \| x_i \|.
+%     \end{equation*}
+%     Por tanto $S$ esta acotado.
+% \end{proof}
+
+% Reformulando el problema (\ref{ex3_theorem_opt_problem}), como,
+% \begin{equation}\label{ex3_min_opt_problem}
+%     \min_{x \in S} -f(x).
+% \end{equation}
+% Ambos son equivalentes.
+% 
+% Por el Lema \ref{ex3_lema_convexity}, es convexo y cerrado,
+% y el funcional $f$ es cuasi convexa y continua,
+% por tanto $f$ es débilmente semi-continua por debajo.
+% Como $S \subset \R^n$ es un sub-espacio de dimension finita,
+% Por el Lema \ref{ex3_lema_bounded}$S$ es débilmente secuencialmente semi-compacto,
+% como se indica en el Anexo A del texto base.
+% 
+% Usando el Teorema 2.3 del texto base,
+% a su vez por el Lema 2.11 del texto base,
+% hemos verificado que existe una solución para el problema (\ref{ex3_min_opt_problem}),
+% y por tanto para el problema (\ref{ex3_theorem_opt_problem}).
+
+
