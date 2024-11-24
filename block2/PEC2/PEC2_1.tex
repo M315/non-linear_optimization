@@ -1,0 +1,83 @@
+\section*{1}
+
+Sea $(X, \| \cdot \|)$ un espacio real normado, $f : X \rightarrow \R$ un funcional convexo y $x_0 \in X$.
+\begin{enumerate}[label=(\alph*)]
+    \item Pruebe que $\partial f(x_0)$ es un conjunto convexo (contenido en el conjunto de funcionales lineales continuos $l : X \rightarrow \R$). 
+    \item Sea $x^*: X \rightarrow \R$ un funcional lineal y continuo. Pruebe que
+        \begin{enumerate}[label=(\alph{enumi}.\arabic*)]
+            \item $\partial (f + x^*)(x_0) = x^* + \partial f(x_0)$, 
+            \item $\partial (\lambda f)(x_0) = \lambda \partial f(x_0)$.
+        \end{enumerate}
+\end{enumerate}
+
+\noindent\rule{10cm}{0.4pt}
+
+
+\subsection*{(a)}
+
+Para probar (a) primero vemos que por el Teorema 3.26 del texto base como $f$ es convexo el conjunto $\partial f(x_0)$ es no vació.
+Recordamos que la definición de $\partial f(x_0)$ es,
+\begin{equation*}
+    \partial f(x_0) = \{ l \in X^* | f(x) \geq f(x_0) + l(x - x_0),\; \forall x \in X \},
+\end{equation*}
+donde $X^*$ es el espacio dual de $X$.
+
+Para todo $l_1, l_2 \in \partial f(x_0)$ y para todo $\lambda \in [0,1]$,
+dado $x \in X$ tenemos,
+\begin{equation*}
+    (\lambda l_1 + (1 - \lambda) l_2) (x - x_0) = \lambda l_1 (x - x_0) + (1 - \lambda) l_2 (x - x_0).
+\end{equation*}
+
+Por tanto,
+\begin{equation*}
+\begin{aligned}
+    f(x_0) + (\lambda l_1 + (1 - \lambda) l_2) (x - x_0) 
+        & = f(x_0) + \lambda l_1 (x - x_0) + (1 - \lambda) l_2 (x - x_0) \\
+        & = \lambda (f(x_0) + l_1 (x - x_0)) + (1 - \lambda) (f(x_0) + l_2 (x - x_0)) \\
+        & \leq \lambda f(x) + (1 - \lambda) f(x) \\
+        & = f(x). \\
+\end{aligned}
+\end{equation*}
+Y por tanto $(\lambda l_1 + (1 - \lambda) l_2) \in \partial f(x_0)$, lo que implica que $\partial f(x_0)$ es convexo.
+
+
+\subsection*{(b.1)}
+
+Vemos que $\partial (f + x^*)(x_0) \subset x^* + \partial f(x_0)$.
+Para todo $\l \in \partial (f + x^*)(x_0)$ tenemos que
+\begin{equation*}
+    (f + x^*)(x) \geq (f + x^*)(x_0) + l(x - x_0) 
+    \Rightarrow f(x_0) \geq f(x_0) + l(x - x_0) - x^*(x - x_0) = f(x_0) + (l - x^*)(x - x_0),
+\end{equation*}
+dado que $x^*$ es un funcional lineal y continuo,
+concluimos que $l - x^* \in \partial f(x_0)$ y esto implica que $l \in x^* + \partial f(x_0)$.
+
+Veamos ahora que $x^* + \partial f(x_0) \subset \partial (f + x^*)(x_0)$.
+Sea $l \in \partial f(x_0)$ entonces,
+\begin{equation*}
+    (f + x^*)(x_0) + (l + x^*)(x - x_0)
+        = f(x_0) + l(x - x_0) + x^*(x_0) + x^*(x - x_0)
+        \leq f(x) + x^*(x),
+\end{equation*}
+por tanto $l + x^* \in \partial (f + x^*)(x_0)$,
+que implica $x^* + \partial f(x_0) \subset \partial (f + x^*)(x_0)$ y consecuentemente  $x^* + \partial f(x_0) = \partial (f + x^*)(x_0)$.
+
+
+\subsection*{(b.2)}
+
+Igual que en el apartado anterior comprobamos ambas inclusiones.
+Veamos que $\partial (\lambda f)(x_0) \subset \lambda \partial f(x_0)$.
+Para todo $l \in \partial (\lambda f)(x_0)$, tenemos
+\begin{equation*}
+    (\lambda f)(x) \geq (\lambda f)(x_0) + l(x - x_0) 
+    \Rightarrow f(x) \geq f(x_0) + \frac{1}{\lambda} l(x - x_0),
+\end{equation*}
+por tanto $\frac{1}{\lambda} l \in \partial f(x_0)$ que implica $l \in \lambda \partial f(x_0)$.
+
+Veamos ahora que $\lambda \partial f(x_0) \subset \partial (\lambda f)(x_0)$.
+Sea $l \in \partial f(x_0)$ y sea $\lambda > 0$, entonces
+\begin{equation*}
+    \lambda f(x) \geq \lambda f(x_0) + \lambda l(x - x0),
+\end{equation*}
+por tanto $\lambda l \in \partial (\lambda f)(x_0)$.
+Y se cumple $\partial (\lambda f)(x_0) = \lambda \partial f(x_0)$.

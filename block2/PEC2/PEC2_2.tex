@@ -1,0 +1,182 @@
+\section*{2}
+
+Sea $\| \cdot \|_{\diamond}$ una norma en $\R^n$ y sea
+\begin{equation*}
+    f(x) = \| x \|_{\diamond}.
+\end{equation*}
+Se define la norma dual del siguiente modo:
+\begin{equation*}
+    \| l \|_{*} 
+        = \max_{h \neq 0} \frac{| \langle l, h \rangle |}{\| h \|_{\diamond}}
+        = \max_{\| h \|_{\diamond} = 1} | \langle l, h \rangle |.
+\end{equation*}
+Pruebe que se cumplen las siguientes propiedades:
+\begin{enumerate}[label=(\alph*)]
+    \item $\partial f(0) = \{ l \in \R^n : \| l \|_{*} \leq 1 \}$. En particular, pruebe que
+        \begin{enumerate}[label=(\alph{enumi}.\arabic*)]
+            \item $\partial \| 0 \|_{2} = \{ l \in \R^n : \| l \|_{2} \leq 1 \}$,
+            \item $\partial \| 0 \|_{1} = \{ l \in \R^n : \| l \|_{\infty} \leq 1 \}$,
+            \item $\partial \| 0 \|_{\infty} = \{ l \in \R^n : \| l \|_{1} \leq 1 \}$,
+        \end{enumerate}
+
+    \item $\partial f(x) = \{ l \in \R^n : \| l \|_{*} \leq 1, \; \langle l, x \rangle = \| x \|_{\diamond} \}$,
+        para cada $x \in \R^n$.
+    
+\end{enumerate}
+
+\noindent\rule{10cm}{0.4pt}
+
+\subsection*{(a)}
+
+Aplicando la definición de subgradiente tenemos
+\begin{equation*}
+\begin{aligned}
+    \partial \| 0 \|_{\diamond}
+        & = \{ l \in \R^n : \| x \|_{\diamond} \geq l(x), \; \forall x \in \R^n \} \\
+        & = \{ l \in \R^n : \frac{| l(x) |}{\| x \|_{\diamond}} \leq 1, \; \forall x \in \R^n \setminus \{ 0 \} \} \\
+        & = \{ l \in \R^n : \| l \|_{*} \leq 1 \}. \\
+\end{aligned}
+\end{equation*}
+
+Los siguientes subapartados son consecuencia del resultado anterior y que el dual de la norma $\ell^2$ es $\ell^2$,
+el dual de $\ell^1$ es $\ell^\infty$ y el dual de $\ell^\infty$ es $\ell^1$.
+
+\subsubsection*{Norma dual de $\ell^2$}
+
+Para ver que la norma dual de $\ell^2$ es ella misma usamos la siguiente definición norma dual,
+para cualquier $y \in (\R^n)^* = \R^n$,
+\begin{equation*}
+    \| y \|_{2}^{*} = \sup_{\| x \|_2 \leq 1} | \langle x, y \rangle |.
+\end{equation*}
+Usando la desigualdad de Cauchy-Schwarz tenemos,
+\begin{equation*}
+        | \langle x, y \rangle |
+        \leq \| x \|_2 \| y \|_2
+        \leq \| y \|_2,
+\end{equation*},
+donde en la ultima desigualdad usamos $\| x \| \leq 1$.
+Finalmente si usamos $x = \frac{y}{\| y \|_2}$, que cumple $\| x \| = 1$,
+tenemos
+\begin{equation*}
+    | \langle x, y \rangle | = \| y \|_2,
+\end{equation*}
+alcanzando el supremo y por tanto
+\begin{equation*}
+    \| y \|_{2}^{*} = \| y \|_2.
+\end{equation*}
+
+\subsubsection*{Norma dual de $\ell^\infty$}
+
+Veamos que la norma dual de $\ell^\infty$ es $\ell^1$,
+tenemos que para cualquier $y \in (\R^n)^* = \R^n$,
+\begin{equation*}
+    \| y \|_{\infty}^{*} = \sup_{\| x \|_\infty \leq 1} | \langle x, y \rangle |
+        = \sup_{\max_{1 \leq i \leq n} |x_i| \leq 1} \left| \sum_{i = 1}^{n} x_i y_i \right|.
+\end{equation*}
+La restricción $\max_{1 \leq i \leq n} |x_i| \leq 1$,
+implica que $x \in [-1, 1]^n \subset \R^n$.
+
+Para maximizar la suma elegimos $x \in[-1, 1]^n$ tal que
+\begin{equation*}
+    x_i = \left\{
+    \begin{aligned}
+        1     & \text{ si } y_i \geq 0, \\
+        -1    & \text{ si } y_i < 0.
+    \end{aligned}
+        \right.
+\end{equation*}
+De este modo se tiene
+\begin{equation*}
+    | \langle x, y \rangle | = \sum_{i = 1}^{n} |y_i|,
+\end{equation*}
+i por tanto
+\begin{equation*}
+    \| y \|_{\infty}^{*} = \sum_{i = 1}^{n} |y_i| = \| y \|_1.
+\end{equation*}
+
+\subsubsection*{Norma dual de $\ell^1$}
+
+Finalmente veamos que la norma dual de $\ell^1$ es $\ell^\infty$,
+tenemos que para cualquier $y \in (\R^n)^* = \R^n$,
+\begin{equation*}
+    \| y \|_{1}^{*} = \sup_{\| x \|_1 \leq 1} | \langle x, y \rangle |
+        = \sup_{\sum_{i = 1}^{n} |x_i| \leq 1} \left| \sum_{i = 1}^{n} x_i y_i \right|.
+\end{equation*}
+
+Para maximizar $ | \langle x, y \rangle | $ con la restricción $\| x \|_1 \leq 1$,
+los componente $|x_i|$ deberían estar concentrados en maximizar los valores mas grandes $|y_i$.
+En particular el máximo se alcanza cuando $x_k = \text{signo}(y_k)$ para $|y_k|$ el componente mas grande de $y$ y $x_i = 0$ para todo $i \neq k$.
+Esto es, sea $k = \text{argmax}_{1 \leq i \leq n} |y_i|$, entonces
+\begin{equation*}
+    x_i = \left\{
+    \begin{aligned}
+        \text{signo}(y_k)   & \text{ si } i = k, \\
+        0                   & \text{ si } i \neq k.
+    \end{aligned}
+        \right.
+\end{equation*}
+En tal caso la norma dual es
+\begin{equation*}
+    \| y \|_{1}^{*} = \max_{1 \leq i \leq n} |y_i| = \| y \|_\infty.
+\end{equation*}
+
+
+
+\subsection*{(b)}
+
+Veamos que 
+\begin{equation*}
+    \partial f(x) = \{ l \in \R^n : \| l \|_{*} \leq 1, \; \langle l, x \rangle = \| x \|_{\diamond} \}, \; \forall x \in \R^n,
+\end{equation*}
+en el caso $x = 0$, ya hemos visto en el apartado anterior que se cumple,
+por tanto veamos que se cumple para $x \neq 0$.
+
+
+Sea $l \in \R^n$ tal que $\| l \|_{*} \leq 1$ y $\langle l, x \rangle = \| x \|_{\diamond}$,
+tenemos que para cualquier $y \in \R^n$,
+\begin{equation*}
+\begin{aligned}
+    \| x \|_{\diamond} + \langle l, y - x \rangle
+        & = \| x \|_{\diamond} + \langle l, y \rangle - \langle l, x \rangle \\
+        & = \| x \|_{\diamond} + \langle l, y \rangle - \| x \|_{\diamond} \\
+        & = \langle l, y \rangle \\ 
+        & \leq \| y \|_{\diamond} \cdot \frac{|\langle l, y \rangle|}{\| y \|_{\diamond}} \\
+        & \leq \| y \|_{\diamond} \| l \|_{*} \\
+        & \leq \| y \|_{\diamond},
+\end{aligned}
+\end{equation*}
+por tanto $l \in \partial \| x \|_{\diamond}$,
+que implica $\{ l \in \R^n : \| l \|_{*} \leq 1, \; \langle l, x \rangle = \| x \|_{\diamond} \} \subset \partial f(x)$,
+para todo $x \in \R^n$.
+
+Sea $l \in \partial f(x)$,
+tenemos que
+\begin{equation*}
+    \| x \|_{\diamond} - \langle l, x \rangle 
+        = \| 2x \|_{\diamond} - \| x \|_{\diamond} - \langle l, 2x - x \rangle
+        \geq 0,
+\end{equation*}
+y
+\begin{equation*}
+    - \| x \|_{\diamond} + \langle l, x \rangle 
+        = \| 0 \|_{\diamond} - \| x \|_{\diamond} - \langle l, 0 - x \rangle
+        \geq 0.
+\end{equation*}
+Las dos desigualdades llevan a $\| x \|_{\diamond} = \langle l, x \rangle$.
+Ademas para todo $y \in \R^n$, se cumple
+\begin{equation*}
+\begin{aligned}
+    \| y \|_{\diamond}
+        & \geq \| x \|_{\diamond} + \langle l, y - x \rangle \\
+        & = \| x \|_{\diamond} + \langle l, y \rangle - \| x \|_{\diamond} \\
+        & = \langle l, y \rangle.
+\end{aligned}
+\end{equation*}
+Por lo tanto podemos concluir que
+\begin{equation*}
+    \| l \|_{*} 
+        = \sup_{y \in \R^n} \frac{|\langle l, y \rangle}{\| y \|_{\diamond}} 
+        \leq 1.
+\end{equation*}
+Por tanto se cumple $\partial f(x) \subset \{ l \in \R^n : \| l \|_{*} \leq 1, \; \langle l, x \rangle = \| x \|_{\diamond} \}$, para todo $x \in \R^n$.
+Y con ambas inclusiones concluimos que $\partial f(x) = \{ l \in \R^n : \| l \|_{*} \leq 1, \; \langle l, x \rangle = \| x \|_{\diamond} \}$.

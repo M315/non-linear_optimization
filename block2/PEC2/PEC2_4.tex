@@ -1,0 +1,132 @@
+\section*{4}
+
+Sea $(X, \| \cdot \|)$ un espacio real normado y $f : X \rightarrow \R := \R \cup \{-\infty, +\infty\}$.
+La función $f^* : X^* \rightarrow \R$ definida por
+\begin{equation*}
+    f^* (x^*) = \sup_{x \in X} \{ \langle x, x^* \rangle - f(x) \},
+\end{equation*}
+se denomina la conjugada de Fenchel de $f$ ($X^*$ denota el conjunto de funcionales lineales y continuos $l : X \rightarrow \R$).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Pruebe que
+        \begin{equation*}
+            f(x) + f^* (x^*) \geq \langle x, x^* \rangle, \quad \forall x \in X, \quad x^* \in X^*.
+        \end{equation*}
+        La desigualdad anterior se conoce como \textit{desigualdad de Young-Fenchel}.
+    
+    \item Sea $x_0 \in \text{dom} f$. Demuestre que
+        \begin{equation*}
+            x^* \in \partial f(x_0)
+        \end{equation*}
+        si y sólo si
+        \begin{equation}\label{ex4_eq1}
+            f(x) + f^*(x^*) = \langle x_0, x^* \rangle,
+        \end{equation}
+        y que lo anterior implica que $x_0 \in \partial f^*(x^*)$.
+    
+    \item Sea $x_0 \in \text{dom} f$. Demuestre que
+        \begin{equation*}
+            \partial f(x_0) \neq \emptyset 
+                \iff f(x_0) = \max_{x^* \in X^*} (\langle x_0, x^* \rangle - f^*(x^*)).
+        \end{equation*}
+    
+\end{enumerate}
+
+\noindent\rule{10cm}{0.4pt}
+
+\subsection*{(a)}
+
+Para cualquier $x \in X$ y $x^* \in X^*$, tenemos
+\begin{equation*}
+\begin{aligned}
+    f(x) + f^*(x^*)
+        & = f(x) + \sup_{\hat{x} \in X} \{ \langle \hat{x}, x^* \rangle -f(\hat{x}) \} \\
+        & \geq f(x) + \langle x, x^* \rangle - f(x) \\
+        & = \langle x, x^* \rangle.
+\end{aligned}
+\end{equation*}
+Como queríamos ver.
+
+
+\subsection*{(b)}
+
+Supongamos que $x^* \in \partial f(x_0)$,
+entonces,
+\begin{equation*}
+\begin{aligned}
+    f(x) & \geq f(x_0) + \langle x - x_0, x^* \rangle, \; \forall x \in X, \\
+    & \Rightarrow \langle x_0, x^* \rangle \geq f(x_0) + \{ \langle x, x^* \rangle - f(x) \} , \; \forall x \in X, \\
+    & \Rightarrow \langle x_0, x^* \rangle \geq f(x_0) + f^*(x^*). \\
+\end{aligned} 
+\end{equation*}
+Usando el anterior resultado junto al resultado del apartado anterior,
+tenemos que
+\begin{equation*}
+    \langle x_0, x^* \rangle = f(x_0) + f^*(x^*).
+\end{equation*}
+
+Supongamos ahora que $x^*$ cumple $(\ref{ex4_eq1})$,
+entonces para todo $x \in X$, tenemos
+\begin{equation*}
+\begin{aligned}
+    f(x_0) + \langle x - x_0, x^* \rangle
+        & = \langle x, x^* \rangle - \langle x_0, x^* \rangle + \langle x_0, x^* \rangle - f^*(x^*) \\
+        & = \langle x, x^* \rangle - \sup_{\hat{x} \in X} \{ \langle \hat{x}, x^* \rangle -f(\hat{x}) \} \\
+        & \leq \langle x, x^* \rangle - (\langle x, x^* \rangle - f(x))  \\
+        & = f(x),  \\
+\end{aligned}
+\end{equation*}
+por tanto $x^* \in \partial f(x_0)$.
+
+Finalmente veamos que si $x^* \in X^*$ y $x_0 \in X$ cumplen $(\ref{ex4_eq1})$,
+entonces se tiene que para cualquier $y^* \in X^*$
+\begin{equation*}
+\begin{aligned}
+    f^*(x^*) + \langle x_0, y^* - x^* \rangle
+        & = - f(x_0) + \langle x_0, x^* \rangle - \langle x_0, x^* \rangle + \langle x_0, y^* \rangle \\
+        & = \langle x_0, y^* \rangle - f(x_0) \\
+        & \leq \sup_{x \in X} \{ \langle x, y^* \rangle - f(x) \} \\
+        & = f^*(y^*), \\
+\end{aligned}
+\end{equation*}
+por tanto $x_0 \in \partial f^*(x^*)$.
+
+
+\subsection*{(c)}
+
+Supongamos que $\partial f(x_0) \neq \emptyset$ y que $y^* \in \partial f(x_0)$,
+por la desigualdad de Young-Fenchel tenemos que
+\begin{equation*}
+    f(x_0) \geq \langle x_0, x^* \rangle - f^*(x^*), \; \forall x^* \in X^*,
+\end{equation*}
+lo que implica que
+\begin{equation}\label{ex4_c_eq}
+\begin{aligned}
+    f(x_0) 
+        & \geq \max_{x^* \in X^*} (\langle x_0, x^* \rangle - f^*(x^*)) \\
+        & \geq \langle x_0, y^* \rangle - f^*(y^*) \\
+        & = f(x_0), \\
+\end{aligned}
+\end{equation}
+donde en la ultima igualdad hemos usado el resultado del apartado anterior.
+Por tanto las desigualdades de $(\ref{ex4_c_eq})$ son igualdades y tenemos
+\begin{equation*}
+        f(x_0) = \max_{x^* \in X^*} (\langle x_0, x^* \rangle - f^*(x^*)).
+\end{equation*}
+
+Supongamos ahora que
+\begin{equation*}
+        f(x_0) = \max_{x^* \in X^*} (\langle x_0, x^* \rangle - f^*(x^*)).
+\end{equation*}
+Sea $y^* \in X^*$ tal que
+\begin{equation*}
+    \langle x_0, y^* \rangle - f^*(y^*) \geq \langle x_0, x^* \rangle - f^*(x^*),
+\end{equation*}
+es decir $y^*$ es un máximo de la función $\langle x_0, x^* \rangle - f^*(x^*)$.
+Entonces tenemos que
+\begin{equation*}
+    f(x_0) + f^*(y^*) = \langle x_0, y^* \rangle,
+\end{equation*}
+por tanto usando el resultado del apartado anterior tenemos que $y^* \in \partial f(x_0)$,
+y por tanto $\partial f(x_0) \neq \emptyset$.
+
