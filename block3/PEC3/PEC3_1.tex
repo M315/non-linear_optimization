@@ -1,0 +1,156 @@
+\section*{1}
+
+\begin{definition}
+    Sea $(X, \| \cdot \|)$ un espacio vectorial normado y $D \subset X$ un cono convexo,
+    con $X \neq D \neq \{ 0_X \}$.
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item Base de un cono.
+            \textup{
+                Se dice que un conjunto no vacío y convexo $B \subset D$ es una base de $D$,
+                si cada elemento $x \in D \setminus \{ 0_X \}$ admite una única representación de la forma
+                \begin{equation*}
+                    x = \lambda b, \text{ con } \lambda > 0 \text{ y } b \in B.
+                \end{equation*}
+            }
+
+        \item Cono polar.
+            \textup{
+                El cono
+                \begin{equation*}
+                    D^* := \{ \mu \in X^* : \mu(d) \geq 0, \; \forall d \in D \},
+                \end{equation*}
+                recibe el nombre de cono polar o cono dual de $D$
+                ($X^*$ denota el espacio dual topológico de $X$).
+            }
+        \item Cono polar estricto.
+            \textup{
+                El conjunto 
+                \begin{equation*}
+                    D^{s*} := \{ \mu \in X^* : \mu(d) > 0, \; \forall d \in D \setminus \{ 0_X \} \},
+                \end{equation*}
+                recibe el nombre de cono polar estricto de $D$.
+            }
+    \end{enumerate}
+\end{definition}
+
+Para los conceptos introducidos en la definición anterior,
+se pide probar las propiedades que se indican a continuación.
+En lo que sigue $(X, \| \cdot \|)$ es un espacio vectorial normado y $D \subset X$ un cono convexo, con $X \neq D \neq \{ 0_X \}$.
+
+\noindent \textit{Propiedades.}
+\begin{enumerate}
+    \item Supóngase que int $D \neq \emptyset$. Se tiene que
+        \begin{equation*}
+            \text{int} D \subset \{ x \in X : \mu(x) > 0, \forall \mu \in D^{*} \setminus \{ 0_{X^*} \} \}.
+        \end{equation*}
+
+    \item Si int $D \neq \emptyset$, entonces $D^{*}$ es puntiagudo (pointed).
+    \item Si $D$ tiene una base, entonces $D$ es puntiagudo (pointed).
+    \item Supóngase que $D^{s*} \neq \emptyset$.
+        Entonces, para cada $\mu \in D^{s*}$ se tiene que el conjunto
+        \begin{equation*}
+            B := \{ d \in D : \mu(d) = 1 \},
+        \end{equation*}
+        es una base de $D$.
+    \item Si $D^{s*} \neq \emptyset$, entonces $D$ es puntiagudo.
+\end{enumerate}
+
+\noindent\rule{10cm}{0.4pt}
+
+\subsection*{1}
+
+Para todo $x \in \text{int}D$ es obvio que $x \in X$,
+ademas para todo $\mu \in D^* \setminus \{ 0_{X^*} \}$, tenemos que $\mu(x) \geq 0$.
+
+Sea $x \in \text{int}D$ supongamos que existe $\mu \in D^* \setminus \{ 0_{X^*} \}$ tal que $\mu(x) = 0$.
+Entonces como $x \in \text{int}D \neq \emptyset$ tenemos que existe $r > 0$ tal que la bola abierta $B(x, r) \subset \text{int} D$.
+
+Tenemos que existe $w \in \text{int}D \cap B(0, r)$ tal que $w > 0$,
+si no existiera tendiéramos que para todo $v \in \text{int}D \cap B(0, r) \subset D$, $\mu(v) = 0$,
+por tanto $\mu = 0_{X^*}$, contradiciendo la hipótesis.
+Por la linealidad de $\mu$ tenemos que $y = x - w \in B(x, r) \subset \text{int} D \subset D$ y
+\begin{equation*}
+    \mu(y) = \mu(x) - \mu(w) = - \mu(w) < 0,
+\end{equation*} 
+contradiciendo que $\mu \in D^*$!!
+
+Por tanto para todo $\mu \in D^* \setminus \{ 0_{X^*} \}$ se tiene que $\mu(x) > 0$,
+y esto implica que 
+\begin{equation*}
+    \text{int} D \subset \{ x \in X : \mu(x) > 0, \forall \mu \in D^{*} \setminus \{ 0_{X^*} \} \}.
+\end{equation*}
+
+Notemos que en este caso $D \neq X$ ya que si $D = X$ el único elemento del dual $D^*$ seria $0_{X^*}$,
+dado que para cualquier otro funcional $\mu$ si existe $d \in D$ tal que $\mu(d) > 0$,
+como $D = X$ tenemos que $-d \in D$ y por tanto $\mu(-d) = - \mu(d) < 0$ contradiciendo que es del dual.
+
+\subsection*{2}
+
+Por el aparatado anterior,
+como $\text{int} D \neq \emptyset$ para todo $x \in \text{int}D$ y $\mu \in D^* \setminus \{ 0_{X^*} \}$ tenemos $\mu(x) > 0$.
+
+Si $-\mu \in D^*$ tenemos que para todo $x \in \text{int}D$, $-\mu(x) > 0$,
+que implica $\mu(x) < 0$, contradiciendo que $\mu(x) > 0$!!
+
+Resultando en que si $\mu \in D^*$ y $-\mu \in D^*$ entonces $\mu = 0_{X^*}$,
+y por tanto $D^*$ es puntiagudo.
+
+\subsection*{3}
+
+Sea $x \in D \setminus \{ 0_X \}$ y $B$ una base de $D$.
+Entonces existe un único $b \in B$ y $\lambda > 0$ tal que $x = \lambda b$.
+
+Si $-x \in D \setminus \{ 0_X \}$,
+entonces, como $B$ es convexo,
+para todo $\alpha \in [0, 1]$ tenemos que
+\begin{equation*}
+    b_\alpha = \alpha b - (1 - \alpha) b = (2 \alpha - 1) b \in B.
+\end{equation*}
+Y $x = \lambda b = 2 \lambda b_{0.75}$,
+contradiciendo que la representación de $x = \lambda b$ con $\lambda > 0$ y $b \in B$ es única.
+Por tanto $x = 0_X$ y consecuentemente $D$ es puntiagudo.
+
+\subsection*{4}
+
+Dado $\mu \in D^{s*}$,
+veamos que para cada $x \in D \setminus \{ 0_X \}$ existe un único $b \in B$ y $\lambda > 0$.
+
+Supongamos que existen $b_1, b_2 \in B$ y $\lambda_1, \lambda_2 > 0$,
+tales que $x = \lambda_1 b_1 = \lambda_2 b_2$.
+Tenemos que
+\begin{equation*}
+    \mu(x) = \lambda_1 = \lambda_1 \mu(b_1) = \lambda_2 \mu(b_2) = \lambda_2,
+\end{equation*}
+por tanto $\lambda_1 = \lambda_2$, y como consecuencia
+\begin{equation*}
+    x = \lambda_1 b_1 = \lambda_1 b_2,
+\end{equation*}
+Resultando en $b_1 = b_2$.
+
+Veamos ahora que dado $\mu \in D^{s*}$, $B$ genera,
+i.e. para todo $x \in D \setminus \{ 0_X \}$ existe $b \in B$ y $\lambda > 0$ tal que $x = \lambda b$.
+
+Supongamos que existe $x \in D \setminus \{ 0_X \}$ tal que para todo $b \in B$ y para todo $\lambda > 0$,
+$x \neq \lambda b$.
+
+Como $D$ es un cono se tiene que para todo $\alpha > 0$, $\alpha x \in D$.
+% Si $\alpha x = \lambda b$, por algún $b \in B$ y $\lambda > 0$,
+% entonces
+% \begin{equation*}
+%     x = \frac{\lambda}{\alpha} b,
+% \end{equation*}
+% contradiciendo la hipótesis que no existe $b \in B$ y $\lambda > 0$ tal que $x = \lambda b$.
+% Por tanto $\alpha x \neq \lambda b$ para todo $b \in B$ y $\lambda > 0$.
+Entonces
+\begin{equation*}
+    \mu(\alpha x) = \alpha \mu(x),
+\end{equation*}
+usando $\alpha = \frac{1}{\mu(x)}$,
+tenemos que $\mu(\alpha x) = 1$ y por tanto $\alpha x \in B$,
+contradiciendo la hipótesis inicial.
+
+\subsection*{5}
+
+Usando el resultado anterior, como $D^{s*} \neq \emptyset$,
+tenemos que $D$ tiene una base,
+por tanto usando la propiedad 3 tenemos que $D$ es puntiagudo.

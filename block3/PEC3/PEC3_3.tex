@@ -1,0 +1,140 @@
+\section*{3}
+
+\begin{definition}
+    Sea $S$ un conjunto convexo no vacío de un espacio vectorial real y $f : S \rightarrow \R$.
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item Pseudoconvexidad estricta.
+            \textup{
+                Supóngase que $f$ tiene derivada direccional en un punto $\bar{x} \in S$ en cada dirección $x - \bar{x}$,
+                con $x \in S$.
+                Se dice que f es estrictamente pseudoconvexo en $\bar{x}$ si
+                \begin{equation*}
+                    f'(\bar{x})(x - \bar{x}) \geq 0, \text{ para } x \in S, \; x \neq \bar{x} \Rightarrow f(x) > f(\bar{x}).
+                \end{equation*}
+            }
+            
+            \item Cuasi convexidad fuerte.
+                \textup{
+                    Se dice que $f$ es cuasi convexo fuerte en $S$ si para cada $x_1 , x_2 \in S$, con $x_1 \neq x_2$,
+                    se tiene que
+                    \begin{equation*}
+                        f(\lambda x_1 + (1 - \lambda) x_2) < \max \{ f(x_1), f(x_2) \}, \text{ para cada } \lambda \in (0, 1).
+                    \end{equation*}
+                }
+    \end{enumerate}
+\end{definition}
+Se pide probar el siguiente resultado:
+
+\begin{theorem}
+    Sea $S$ un conjunto convexo no vacío de un espacio vectorial normado.
+    \begin{enumerate}[label=\textup{(\alph*)}]
+        \item 
+            \textup{
+                Considérese el problema
+                \begin{equation*}
+                    \min_{x \in S} f(x),
+                \end{equation*}
+                con $f : S \rightarrow \R$.
+                Supóngase que $f$ es cuasi convexo fuerte en $S$.
+                Si $\hat{x}$ es un mínimo local del problema,
+                entonces $\hat{x}$ es la única solución global del problema.
+            }
+    
+        \item 
+            \textup{
+                Sea $f$ un funcional definido en un conjunto abierto que contiene a $S$.
+                Si $f$ es diferenciable Fréchet en cada punto $\hat{x} \in S$ y estrictamente pseudoconvexo en cada punto $\hat{x} \in S$,
+                entonces $f$ es cuasi convexo fuerte en $S$.
+            }
+    \end{enumerate}
+\end{theorem}
+
+\noindent\rule{10cm}{0.4pt}
+
+\subsection*{(a)}
+
+Este aparatado es muy similar al problema 2 de la entrega del bloque 1.
+
+Sea $x_0 \in S$ un mínimo local de un funcional cuasi convexo fuerte $f$.
+Entonces $\exists \varepsilon > 0$ tal que $f(x_0) \leq f(x)$ para todo $x \in S \cap B(x_0, \varepsilon)$.
+
+Consideremos un punto $x \in S \setminus B(x_0, \varepsilon)$, tal que $f(x) \neq f(x_0)$.
+Definimos $\lambda := \frac{\varepsilon}{\| x_0 - x \|} \in (0, 1)$,
+obteniendo $x_\lambda := \lambda x + (1 - \lambda) x_0 \in S$,
+\begin{equation*}
+    \| x_\lambda - x_0 \| = \| \lambda x + (1 - \lambda) x_0 - x_0 \| = \lambda \| x - x_0 \| = \varepsilon,
+\end{equation*}
+es decir $x_\lambda \in B(x_0, \varepsilon)$.
+
+Por tanto, como $x_0 \neq x_\lambda$, utilizando la cuasi convexidad fuerte de $f$,
+\begin{equation*}
+    f(x_0) \leq f(x_\lambda) = f(\lambda x + (1 - \lambda) x_0 - x_0) < \max \{ f(x), f(x_0) \},
+\end{equation*}
+lo que implica $f(x_0) < f(x)$, por tanto para todo $x \in S$ tenemos que $f(x_0) = f(x)$ o bien $f(x_0) < f(x)$,
+asi que $x_0$ es un mínimo global.
+
+
+\subsection*{(b)}
+
+Para demostrar la segunda parte del teorema seguiremos la idea de la demostración del teorema 4.18 del texto base.
+
+Dados $x, y \in S$ tales que $x \neq y$,
+supongamos que existe $\hat{\lambda} \in (0, 1)$ tal que
+\begin{equation*}
+    f(\hat{\lambda} x + (1 - \hat{\lambda}) y) \geq \max \{ f(x), f(y) \}.
+\end{equation*}
+Como $f$ es diferenciable Fréchet,
+por el teorema 3.15 del texto base $f$ es continua,
+por tanto existe $\bar{\lambda} \in (0, 1)$ tal que
+\begin{equation*}
+    f(\bar{\lambda} x + (1 - \bar{\lambda}) y) \geq f(\lambda x + (1 - \lambda) y), \text{ para todo } \lambda \in (0, 1).
+\end{equation*}
+
+Usando el teorema 3.13 y el teorema 3.8 (a) del texto base tenemos que para $\bar{x} := \bar{\lambda} x + (1 - \bar{\lambda}) y$
+\begin{equation*}
+    f'(\bar{x})(x - \bar{x}) \leq 0,
+\end{equation*}
+y
+\begin{equation*}
+    f'(\bar{x})(y - \bar{x}) \leq 0.
+\end{equation*}
+Con
+\begin{equation}\label{ex3_b_ineq}
+\begin{aligned}
+    x - \bar{x} & = x - \bar{\lambda} x - (1 - \bar{\lambda}) y = (1 - \bar{\lambda}) (x - y), \\
+    y - \bar{x} & = y - \bar{\lambda} x - (1 - \bar{\lambda}) y = - \bar{\lambda} (x - y), \\
+\end{aligned}
+\end{equation}
+usando la linearidad de $f'(\bar{x})$ obtenemos
+\begin{equation*}
+    0 \geq f'(\bar{x})(x - \bar{x}) = (1 - \bar{\lambda}) f'(\bar{x}) (x - y),
+\end{equation*}
+y
+\begin{equation*}
+    0 \geq f'(\bar{x})(y - \bar{x}) = - \bar{\lambda} f'(\bar{x}) (x - y).
+\end{equation*}
+Por tanto tenemos que $f'(\bar{x})(x - y) = 0$,
+y usando la igualdad $(\ref{ex3_b_ineq})$ también tenemos $f'(\bar{x})(y - \bar{x}) = 0$.
+
+Como hemos asumido que $f$ es estrictamente pseudoconvexo en cada punto $x \in S$,
+$f$ es estrictamente pseudoconvexo en $\bar{x}$ y por tanto
+\begin{equation*}
+    f(y) - f(\bar{x}) > 0.
+\end{equation*}
+
+Pero esta desigualad contradice la siguiente desigualad
+\begin{equation*}
+\begin{aligned}
+    f(y) - f(\bar{x})
+        & = f(y) - f(\bar{\lambda} x + (1 - \bar{\lambda}) y) \\
+        & \leq f(y) - f(\hat{\lambda} x + (1 - \hat{\lambda}) y) \\
+        & \leq f(y) - \max \{ f(x), f(y) \} \\
+        & \leq 0. \\
+\end{aligned}
+\end{equation*}
+
+Por tanto para todo $\lambda \in (0,1)$
+\begin{equation*}
+    f(\lambda x + (1 - \lambda) y) < \max \{ f(x), f(y) \},
+\end{equation*}
+y consecuentemente $f$ es cuasi convexo fuerte.
