@@ -1,0 +1,369 @@
+\section*{2}
+
+Encuentra una solución optima para los siguientes problemas de optimización
+\begin{enumerate}[label=(\alph*)]
+    \item 
+        \begin{equation*}
+        \begin{aligned}
+            \min \quad & (x - 3)^2 + (y - 2)^2 \\
+            \text{sujecto a} \quad & x^2 + y^2 \leq 5, \\
+                & x + y \leq 3, \\
+                & x \geq 0, \quad y \geq 0.
+        \end{aligned}
+        \end{equation*}
+
+    \item 
+        \begin{equation*}
+        \begin{aligned}
+            \min \quad & (x - \frac{9}{4})^2 + (y - 2)^2 \\
+            \text{sujecto a} \quad & x^2 - y \leq 0, \\
+                & x + y - 6 \leq 0, \\
+                & x \geq 0, \quad y \geq 0.
+        \end{aligned}
+        \end{equation*}
+
+    \item 
+        \begin{equation*}
+        \begin{aligned}
+            \max \quad & 3 x - y - 4 z^2 \\
+            \text{sujecto a} \quad & x + y + z \leq 0, \\
+                & -x + 2y + z^2 = 0, \\
+                & x, y, z \in \R.
+        \end{aligned}
+        \end{equation*}
+
+\end{enumerate}
+
+\noindent\rule{10cm}{0.4pt}
+
+\subsection*{(a)}
+
+Las condiciones KKT para cualquier $(x, y) \in \R^2$ en este problema son
+\begin{equation*}
+    \begin{pmatrix}
+        2x - 6 \\
+        2y - 4 \\
+    \end{pmatrix}
+    +
+    u_1
+    \begin{pmatrix}
+        2x \\
+        2y \\
+    \end{pmatrix}
+    + u_2
+    \begin{pmatrix}
+        1 \\
+        1 \\
+    \end{pmatrix}
+    + u_3
+    \begin{pmatrix}
+        -1 \\
+        0 \\
+    \end{pmatrix}
+    + u_4
+    \begin{pmatrix}
+        0 \\
+        -1 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0 \\
+        0 \\
+    \end{pmatrix},
+\end{equation*}
+\begin{equation*}
+    u_1(x^2 + y^2 - 5) = 0,
+\end{equation*}
+\begin{equation*}
+    u_2(x + y - 3) = 0,
+\end{equation*}
+\begin{equation*}
+    u_2(x + y - 3) = 0,
+\end{equation*}
+\begin{equation*}
+    u_3 x = 0,
+\end{equation*}
+\begin{equation*}
+    u_4 y = 0.
+\end{equation*}
+
+Consideramos el caso donde $g_1$ y $g_2$ están activas, por tanto $u_3 = u_4 = 0$, $x > 0$, $y > 0$, $u_1 \geq 0$, $u_2 \geq 0$,
+y las condiciones
+\begin{equation*}
+\begin{aligned}
+    (2x) (1 + u_1) + u_2 - 6 & = 0, \\
+    (2y) (1 + u_1) + u_2 - 4 & = 0, \\
+    x^2 + y^2 - 5 & = 0, \\
+    x + y - 3 & = 0, \\
+\end{aligned}
+\end{equation*}
+de la ultima igualdad tenemos que $x = 3 - y$,
+substituyendo en la penúltima ecuación
+\begin{equation*}
+    9 - 6 y + 2 y^2 - 5 = 0 \Rightarrow y_1 = 1, \; y_2 = 2,
+\end{equation*}
+por tanto $x_1 = 2$, $x_2 = 1$.
+Amabas soluciones cumplen $x > 0$ e $y > 0$,
+veamos que cumplen las dos primeras igualdades,
+para $(2, 1)$ tenemos que
+\begin{equation*}
+    \left\{
+    \begin{aligned}
+        4 u_1 + u_2 - 2 & = 0 \\
+        2 u_1 + u_2 - 2 & = 0 \\
+    \end{aligned}
+    \right.
+\end{equation*}
+por tanto $u_1 = 0 \geq 0$ y $u_2 = 2 \geq 0$,
+cumpliendo las condiciones KKT,
+para $(1, 2)$ se tiene
+\begin{equation*}
+    \left\{
+    \begin{aligned}
+        2 u_1 + u_2 - 4 & = 0 \\
+        4 u_1 + u_2 & = 0 \\
+    \end{aligned}
+    \right.
+\end{equation*}
+por tanto $u_1 = - 2$ y $u_2 = 8$, pero $u_1 < 0$ incumpliendo $u_1 \geq 0$,
+por eso $(1, 2)$ no cumple las condiciones KKT.
+
+Para ver que $(2, 1)$ es solución del problema queremos usar el Teorema 5.17 del texto base,
+para ello es suficiente ver que $f, g_1, g_2$ son convexas.
+
+La Hessiana de la función objetivo $f$ es
+\begin{equation*}
+\begin{pmatrix}
+    2 & 0 \\
+    0 & 2 \\
+\end{pmatrix},
+\end{equation*}
+es semi-definida positiva y la Hessiana de $g_1$
+\begin{equation*}
+\begin{pmatrix}
+    2 & 0 \\
+    0 & 2 \\
+\end{pmatrix},
+\end{equation*}
+es semi-definida positiva y la función $g_2$ es afina y por tanto convexa.
+De modo que $f, g_1, g_2$ son convexas y por el teorema 5.17 del libro de texto $(2, 1)$ es solución del problema de optimización.
+
+
+\subsection*{(b)}
+
+Las condiciones KKT para cualquier $(x, y) \in \R^2$ son
+\begin{equation*}
+    \begin{pmatrix}
+        2x - \frac{9}{2} \\
+        2y - 4 \\
+    \end{pmatrix}
+    +
+    u_1
+    \begin{pmatrix}
+        2x \\
+        -1 \\
+    \end{pmatrix}
+    + u_2
+    \begin{pmatrix}
+        1 \\
+        1 \\
+    \end{pmatrix}
+    + u_3
+    \begin{pmatrix}
+        -1 \\
+        0 \\
+    \end{pmatrix}
+    + u_4
+    \begin{pmatrix}
+        0 \\
+        -1 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0 \\
+        0 \\
+    \end{pmatrix},
+\end{equation*}
+\begin{equation*}
+    u_1 (x^2 - y) = 0,
+\end{equation*}
+\begin{equation*}
+    u_2 (x + y - 6) = 0,
+\end{equation*}
+\begin{equation*}
+    u_3 x = 0,
+\end{equation*}
+\begin{equation*}
+    u_4 y = 0.
+\end{equation*}
+
+Consideramos el caso donde solo $g_1$ esta activo,
+por tanto $u_2 = u_3 = u_4 = 0$, $x > 0$, $y > 0$, $u_1 \geq 0$ y $x + y - < 6$,
+y las condiciones
+\begin{equation*}
+\begin{aligned}
+    x^2 - y = 0, \\
+    2x - \frac{9}{2} + 2 u_1 x = 0, \\ 
+    2y - 4 - u_1 = 0, \\ 
+\end{aligned}
+\end{equation*}
+de la primera condición tenemos que $x^2 = y$,
+substituyendo en la ultima ecuación tenemos,
+\begin{equation*}
+    u_1 = 2x^2 - 4,
+\end{equation*}
+finalmente substituyendo en la segunda ecuación obtenemos
+\begin{equation*}
+    4 x^3 - 6x - \frac{9}{2} = 0 \Rightarrow x = \frac{3}{2},
+\end{equation*}
+por tanto $x = 1.5$, $y = 2.25$ y $u_1 = 0.5$ son solución del sistema,
+y $(1.5, 2.25)$ satisfacen las condiciones KKT.
+
+La Hessiana de la función objetivo es
+\begin{equation*}
+\begin{pmatrix}
+    2 & 0 \\
+    0 & 2 \\
+\end{pmatrix},
+\end{equation*}
+es semi-definida positiva y la Hessiana de $g_1$
+\begin{equation*}
+\begin{pmatrix}
+    2 & 0 \\
+    0 & 0 \\
+\end{pmatrix},
+\end{equation*}
+también es semi-definida positiva,
+por tanto ambas son funciones convexas y podemos usar el Teorema 5.17 del libro de texto para concluir que $(1.5, 2.25)$ es un mínimo del problema de optimización.
+
+\subsection*{(c)}
+
+En este caso el problema es de maximization,
+por tanto para aplicar el mismo método que en los apartados anteriores debemos reescribir el problema como
+\begin{equation} \label{orginal_problem_c}
+\begin{aligned}
+    \min \quad & -3 x + y + 4 z^2 \\
+    \text{sujecto a} \quad & x + y + z \leq 0, \\
+        & -x + 2y + z^2 = 0, \\
+        & x, y, z \in \R.
+\end{aligned}
+\end{equation}
+En este caso las condiciones KKT para cualquier $(x, y, z) \in \R^3$ son
+\begin{equation*}
+    \begin{pmatrix}
+        -3 \\
+        1 \\
+        8z \\
+    \end{pmatrix}
+    + u_1
+    \begin{pmatrix}
+        1 \\
+        1 \\
+        1 \\
+    \end{pmatrix}
+    + v_1
+    \begin{pmatrix}
+        -1 \\
+        2 \\
+        2z \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0 \\
+        0 \\
+        0 \\
+    \end{pmatrix},
+\end{equation*}
+reescribimos las condiciones como
+\begin{equation*}
+\left\{
+\begin{aligned}
+    - 3 + u_1 - v_1 & = 0 \\
+    1 + u_1 - 2 v_1 & = 0 \\
+    8 z + u_1 + 2 z v_1 & = 0 \\
+\end{aligned}
+\right.
+\end{equation*}
+y también deben cumplir
+\begin{equation*}
+    u_1 (x + y + z) = 0,
+\end{equation*}
+\begin{equation*}
+    -x + 2 y + z^2 = 0.
+\end{equation*}
+
+Usando la primera igualdad tenemos que
+\begin{equation*}
+    u_1 = 3 + v_1,
+\end{equation*}
+substituyendo en la segunda
+\begin{equation*}
+    4 + 3 v_1 = 0 \Rightarrow v_1 = \frac{4}{3},
+\end{equation*}
+y por tanto $u_1 = \frac{5}{3}$,
+substituyendo ahora en la tercera igualdad obtenemos
+\begin{equation*}
+    8 z + \frac{5}{3} - \frac{8}{3} z = 0 \Rightarrow z = - \frac{5}{16},
+\end{equation*}
+ahora usando la penúltima igualdad
+\begin{equation*}
+    x = \frac{5}{16} - y,
+\end{equation*}
+y substituyendo en la ultima igualdad tenemos que
+\begin{equation*}
+    3 y - \frac{5}{16} + \frac{25}{256} = 0 \Rightarrow y = \frac{55}{768},
+\end{equation*}
+y por tanto $x = \frac{185}{768}$.
+
+De modo que $(\frac{185}{768}, \frac{55}{768}, -\frac{5}{16})$ satisfacen las condiciones KKT.
+Veamos que se cumplen las hipótesis del Teorema 5.17 del libro de texto.
+
+La Hessiana de la función objetivo es
+\begin{equation*}
+    \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 8 \\
+    \end{pmatrix},
+\end{equation*}
+que es semi-definida positiva y por tanto convexa,
+la función $g_1$ es linear y por tanto convexa.
+
+Por otro lado la función $h_1$ no es quasi-linear, y este es un requisito del Teorema 5.17.
+Consideramos la siguiente variación del problema $(\ref{orginal_problem_c})$ relajando la condición $h_1$,
+\begin{equation} \label{new_problem_c}
+\begin{aligned}
+    \max \quad & 3 x - y - 4 z^2 \\
+    \text{sujecto a} \quad & x + y + z \leq 0, \\
+        & -x + 2y + z^2 \leq 0, \\
+        & x, y, z \in \R.
+\end{aligned}
+\end{equation}
+Las condiciones KKT de el nuevo problema so idénticas a las del problema original excepto que debe cumplir
+\begin{equation*}
+    v_1 (-x + 2y + z^2) = 0,
+\end{equation*}
+donde mantenemos la natación con $v_1$ por conveniencia.
+
+Tal y como hemos visto anteriormente
+\begin{equation*}
+    u_1 = \frac{5}{3}, \quad
+    v_1 = \frac{4}{3}, \quad
+    x = \frac{185}{768}, \quad
+    y = \frac{55}{768}, \quad
+    z = -\frac{5}{16}, \quad
+\end{equation*}
+cumplen las condiciones KKT para el problema $(\ref{new_problem_c})$,
+en este caso la función $h_1$ tiene como matriz Hessiana
+\begin{equation*}
+    \begin{pmatrix}
+        0 & 0 & 0 \\
+        0 & 0 & 0 \\
+        0 & 0 & 2 \\
+    \end{pmatrix},
+\end{equation*}
+que es semi-definida positiva y por tanto $h_1$ es convexa.
+En este caso por tanto podemos aplicar el Teorema 5.17 para confirmar que $(\frac{185}{768}, \frac{55}{768}, -\frac{5}{16})$ es una solución del problema $(\ref{new_problem_c})$.
+Como en el problema $(\ref{new_problem_c})$ la función $h_1$ esta activa,
+se cumple que $-x + 2y + z^2 = 0$ y podemos afirmar que $(\frac{185}{768}, \frac{55}{768}, -\frac{5}{16})$ también es solución del problema original $(\ref{orginal_problem_c})$.
+

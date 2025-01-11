@@ -1,0 +1,146 @@
+\section*{1}
+
+Dado el problema de optimización
+\begin{equation*}
+\begin{aligned}
+    \min \quad & x_1 + x_2 \\
+    \text{sujecto a} \quad & x_2 \leq x_1^3, \\
+        & x_1 \in \R, \quad x_2 \geq 0.
+\end{aligned}
+\end{equation*}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Demuestra que $\bar{x} = (0, 0)$ es una solución del problema de optimización.
+    \item Se satisface MFCQ en el punto $\bar{x} = (0, 0)$?
+    \item Se satisfacen las condiciones KKT en el punto $\bar{x} = (0, 0)$?
+\end{enumerate}
+
+\noindent\rule{10cm}{0.4pt}
+
+\subsection*{(a)}
+
+Dadas las restricciones
+\begin{equation*}
+    x_2 \leq x_1^3, \quad x_2 \geq 0,
+\end{equation*}
+tenemos que necesariamente
+\begin{equation*}
+    x_1 \geq 0,
+\end{equation*}
+como la funcion
+\begin{equation*}
+    f(x_1, x_2) = x_1 + x_2,
+\end{equation*}
+es positiva para todo $x_1, x_2 \geq 0$ tenemos que
+\begin{equation*}
+    f(0,0) = 0 \leq f(x_1, x_2), \; \forall (x_1, x_2) \in \R^{2}_{+},
+\end{equation*}
+por tanto $(0, 0)$ es un mínimo de la función en el conjunto factible y una solución del problema.
+
+
+\subsection*{(b)}
+
+Consideramos
+\begin{equation*}
+    g(x_1, x_2) =
+    \begin{pmatrix}
+        x_2 - x_1^3 \\
+        -x_2 \\
+    \end{pmatrix},
+\end{equation*}
+y el cono $C = \R^2_{+}$.
+Entonces para todo $(y_1, y_2) \in \R^2$
+\begin{equation*}
+    g(0, 0) + g'(0, 0) ((0, 0) - (y_1, y_2))^T
+    = (0, 0) + 
+        \begin{pmatrix}
+            0 & 1 \\
+            0 & -1 \\
+        \end{pmatrix}
+        \begin{pmatrix}
+            -y_1 \\
+            -y_2 \\
+        \end{pmatrix}
+    = (-y_2, y_2),
+\end{equation*}
+claramente $(-y_2, y_2) \not\in - \text{int}(\R^2_{+})$,
+por tanto no se cumplen las condiciones MFCQ.
+
+\subsection*{(c)}
+
+El sistema de condiciones KKT del problema viene dado por
+\begin{equation*}
+    \begin{pmatrix}
+        1 \\
+        1 \\
+    \end{pmatrix} 
+    + u_1
+    \begin{pmatrix}
+        -3 x_1^2 \\
+        1 \\
+    \end{pmatrix} 
+    + u_2
+    \begin{pmatrix}
+        0 \\
+        -1 \\
+    \end{pmatrix} 
+    =
+    \begin{pmatrix}
+        0 \\
+        0 \\
+    \end{pmatrix},
+\end{equation*}
+\begin{equation*}
+    u_1(x_2 + x_1^3) = 0,
+\end{equation*}
+\begin{equation*}
+    u_2(x_2) = 0,
+\end{equation*}
+\begin{equation*}
+    u_1 \geq 0, \quad u_2 \geq 0.
+\end{equation*}
+Si $u_2 = 0$ implica que $1 + u_1 = 0$ y por tanto $u_1 = -1 < 0!$ contradiciendo la condición que $u_1 \geq 0$,
+por otro lado si $u_1 = 0$ tenemos que $1 = 0!$ que es absurdo,
+concluimos que ambas $g_1$ y $g_2$ están activas.
+
+Pero esto hace que la asunción de regularidad del problema,
+que existe $(y_1, y_2) \in \R^2$ tal que
+\begin{equation*}
+    \nabla g_i(0, 0)^T
+    \begin{pmatrix}
+        y_1 \\
+        y_2 \\
+    \end{pmatrix}
+    < 0,
+\end{equation*}
+para todo $g_i$ activo.
+Pero para $g_1$, tenemos
+\begin{equation*}
+    \nabla g_1(0, 0)^T
+    \begin{pmatrix}
+        y_1 \\
+        y_2 \\
+    \end{pmatrix}
+    = (0, 1)
+    \begin{pmatrix}
+        y_1 \\
+        y_2 \\
+    \end{pmatrix}
+    = y_2,
+\end{equation*}
+y para $g_2$, tenemos
+\begin{equation*}
+    \nabla g_2(0, 0)^T
+    \begin{pmatrix}
+        y_1 \\
+        y_2 \\
+    \end{pmatrix}
+    = (0, -1)
+    \begin{pmatrix}
+        y_1 \\
+        y_2 \\
+    \end{pmatrix}
+    = -y_2,
+\end{equation*}
+claramente no existe $y_2 \in \R$ tal que $y_2 < 0$ y $-y_2 < 0$,
+por tanto el problema no cumple las condiciones KKT.

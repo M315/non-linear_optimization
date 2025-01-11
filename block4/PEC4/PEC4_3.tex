@@ -1,0 +1,50 @@
+\section*{3}
+
+Cada punto de la recta entre $(0,0)$ y $(6,0)$ es solución del problema de optimización
+\begin{equation*}
+\begin{aligned}
+    \min \quad & \frac{x + 3 y + 3}{2 x + y + 6} \\
+    \text{sujecto a} \quad & 2 x + y \leq 12, \\
+        & -x + 2 y \leq 4, \\
+        & x \geq 0, \quad y \geq 0?
+\end{aligned}
+\end{equation*}
+
+\noindent\rule{10cm}{0.4pt}
+
+Consideramos la recta
+\begin{equation*}
+    R = \{ (x, 0) | 0 \leq x \leq 6 \},
+\end{equation*}
+para todo $(x, 0) \in R$ tenemos que la función objetivo
+\begin{equation*}
+    f(x, 0) = \frac{x + 3}{2 x + 6} = \frac{1}{2} \frac{x + 3}{x + 3} = \frac{1}{2}.
+\end{equation*}
+Ademas para todo $(x, 0) \in R$ se cumple
+\begin{equation*}
+\begin{aligned}
+    g_1(x, 0) & = 2 x - 12 \leq 0, \\
+    g_2(x, 0) & = x - 4 \leq 0, \\
+    g_3(x, 0) & = -x \leq 0, \\
+    g_4(x, 0) & = 0 \leq 0, \\
+\end{aligned}
+\end{equation*}
+por tanto la recta $R$ esta contenida dentro del conjunto factible del problema.
+
+Vemos ademas que para todo $(x, y) \in S$ la función objetivo cumple
+\begin{equation*}
+\begin{aligned}
+    f(x, y) 
+        & = \frac{x + 3 y + 3}{2 x + y + 6} \\
+        & = \frac{x + \frac{1}{2} y + 3}{2 x + y + 6} + \frac{\frac{5}{2} y}{2 x + y + 6} \\
+        & = \frac{1}{2} \frac{x + \frac{1}{2} y + 3}{x + \frac{1}{2} y + 3} + \frac{\frac{5}{2} y}{2 x + y + 6} \\
+        & = \frac{1}{2} + \frac{\frac{5}{2} y}{2 x + y + 6},
+\end{aligned}
+\end{equation*}
+como $(x,y) \in S$ tenemos que $\frac{5}{2} y \geq 0$ y $2 x + y + 6 \geq 0$,
+por tanto
+\begin{equation*}
+        \frac{\frac{5}{2} y}{2 x + y + 6} \geq 0,
+\end{equation*}
+que implica $f(x, y) \geq \frac{1}{2}$ para todo $(x, y) \in S$,
+concluyendo que todo punto de la recta $R$ es solución del problema de optimización.
