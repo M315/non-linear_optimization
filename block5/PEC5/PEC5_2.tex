@@ -1,0 +1,39 @@
+\section*{2}
+
+Determine la solución (máximo) del problema dual asociado al siguiente problema primal
+\begin{equation*}
+\begin{aligned}
+    (P) \quad \min \quad & x_1 + 2 (x_2 - 1)^2 \\
+    \text{sujecto a} \quad & - x_1 - x_2 + 1 \leq 0, \\
+        & x_1, x_2 \in \R.
+\end{aligned}
+\end{equation*}
+
+\noindent\rule{10cm}{0.4pt}
+
+El problema dual asociado a $(P)$ se puede escribir como
+\begin{equation*}
+    \max_{u \geq 0} \inf_{(x_1, x_2) \in \R^2} x_1 + 2 (x_2 - 1)^2 - u (x_1 + x_2 - 1),
+\end{equation*}
+que es equivalente a
+\begin{equation*}
+    \max_{u \geq 0} \inf_{(x_1, x_2) \in \R^2}
+        2 x_2^2
+        - 4 x_2 
+        + 2
+        + u (1 - x_2)
+        + (1 - u) (x_1),
+\end{equation*}
+vemos que si  $u < 1$ y $x_1 \rightarrow - \infty$ la function anterior tiende a $-\infty$,
+por tanto $u \geq 1$,
+pero si $u > 1$ entonces el ínfimo se alcanzaría cuando $x_1 \rightarrow \infty$ valiendo $-\infty$,
+de modo que $u = 1$.
+Y tenemos el problema
+\begin{equation*}
+    \min_{(x_1, x_2) \in \R^2}
+        2 x_2^2
+        - 5 x_2 
+        + 3,
+\end{equation*}
+que tiene como mínimo $-\frac{1}{8}$,
+y por tanto la solución del problema dual es $-\frac{1}{8}$.
